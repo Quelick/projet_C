@@ -1,0 +1,144 @@
+int afficheRechercheVolParDestination() {
+    FILE *file = fopen("./Vols.dat", "rb");
+    if (file == NULL) {
+        perror("Erreur d'ouverture de Vols.dat");
+        exit(EXIT_FAILURE);
+    }
+
+    Vols v;
+    char destination[20]; // Stockage pour la destination recherchée
+    int trouve = 0; // Variable pour suivre si un vol a été trouvé
+
+    printf("Entrez la destination du vol à rechercher : ");
+    scanf("%19s", destination); // Lecture de la destination
+
+    while (fread(&v, sizeof(Vols), 1, file) == 1) {
+        if (strcmp(v.lieu_arrive, destination) == 0) { // Comparaison des destinations
+            printf("\nCompagnie : %s\n", v.compagnie);
+            printf("Lieu de départ : %s\n", v.lieu_depart);
+            printf("Lieu d'arrivée : %s\n", v.lieu_arrive);
+            printf("Date de départ : %s\n", v.date_depart);
+            printf("Date d'arrivée : %s\n", v.date_arrive);
+            printf("Durée (en heures) : %d\n", v.duree);
+            printf("Nombre de sièges économiques : %d\n", v.nb_siege_eco);
+            printf("Nombre de sièges affaires : %d\n", v.nb_siege_aff);
+            printf("Nombre de sièges première classe : %d\n", v.nb_siege_class);
+            printf("Numéro du vol : %d\n", v.numero_vol);
+            printf("Prix siège économique : %d\n", v.prix_eco);
+            printf("Prix siège affaires : %d\n", v.prix_aff);
+            printf("Prix siège première classe : %d\n", v.prix_class);
+            printf("-------------------------------------\n");
+            trouve = 1; // Marque qu'au moins un vol a été trouvé
+        }
+    }
+
+    if (!trouve) {
+        printf("Aucun vol trouvé pour la destination : %s\n", destination);
+        fclose(file);
+        return -1; // Indique que la recherche a échoué
+    }
+
+    fclose(file);
+    return 0; // Indique que la recherche a réussi
+}
+
+int afficheRechercheVolParDateDepart() {
+    FILE *file = fopen("./Vols.dat", "rb");
+    if (file == NULL) {
+        perror("Erreur d'ouverture de Vols.dat");
+        exit(EXIT_FAILURE);
+    }
+
+    Vols v;
+    char dateDepart[20]; // Stockage pour la date recherchée
+    int trouve = 0; // Variable pour suivre si un vol a été trouvé
+
+    printf("Entrez la date de départ à rechercher : ");
+    scanf("%19s", dateDepart); // Lecture de la date de départ
+
+    while (fread(&v, sizeof(Vols), 1, file) == 1) {
+        if (strcmp(v.date_depart, dateDepart) == 0) { // Comparaison des dates
+            printf("\nCompagnie : %s\n", v.compagnie);
+            printf("Lieu de départ : %s\n", v.lieu_depart);
+            printf("Lieu d'arrivée : %s\n", v.lieu_arrive);
+            printf("Date de départ : %s\n", v.date_depart);
+            printf("Date d'arrivée : %s\n", v.date_arrive);
+            printf("Durée (en heures) : %d\n", v.duree);
+            printf("Nombre de sièges économiques : %d\n", v.nb_siege_eco);
+            printf("Nombre de sièges affaires : %d\n", v.nb_siege_aff);
+            printf("Nombre de sièges première classe : %d\n", v.nb_siege_class);
+            printf("Numéro du vol : %d\n", v.numero_vol);
+            printf("Prix siège économique : %d\n", v.prix_eco);
+            printf("Prix siège affaires : %d\n", v.prix_aff);
+            printf("Prix siège première classe : %d\n", v.prix_class);
+            printf("-------------------------------------\n");
+            trouve = 1; // Marque qu'au moins un vol a été trouvé
+        }
+    }
+
+    if (!trouve) {
+        printf("Aucun vol trouvé pour la date de départ : %s\n", dateDepart);
+        fclose(file);
+        return -1; // Indique que la recherche a échoué
+    }
+
+    fclose(file);
+    return 0; // Indique que la recherche a réussi
+}
+
+int afficheRechercheVolParDateArrivee() {
+    FILE *file = fopen("./Vols.dat", "rb");
+    if (file == NULL) {
+        perror("Erreur d'ouverture de Vols.dat");
+        exit(EXIT_FAILURE);
+    }
+
+    Vols v;
+    char dateArrivee[20]; // Stockage pour la date recherchée
+    int trouve = 0; // Variable pour suivre si un vol a été trouvé
+
+    printf("Entrez la date d'arrivée à rechercher : ");
+    scanf("%19s", dateArrivee); // Lecture de la date d'arrivée
+
+    while (fread(&v, sizeof(Vols), 1, file) == 1) {
+        if (strcmp(v.date_arrive, dateArrivee) == 0) { // Comparaison des dates
+            printf("\nCompagnie : %s\n", v.compagnie);
+            printf("Lieu de départ : %s\n", v.lieu_depart);
+            printf("Lieu d'arrivée : %s\n", v.lieu_arrive);
+            printf("Date de départ : %s\n", v.date_depart);
+            printf("Date d'arrivée : %s\n", v.date_arrive);
+            printf("Durée (en heures) : %d\n", v.duree);
+            printf("Nombre de sièges économiques : %d\n", v.nb_siege_eco);
+            printf("Nombre de sièges affaires : %d\n", v.nb_siege_aff);
+            printf("Nombre de sièges première classe : %d\n", v.nb_siege_class);
+            printf("Numéro du vol : %d\n", v.numero_vol);
+            printf("Prix siège économique : %d\n", v.prix_eco);
+            printf("Prix siège affaires : %d\n", v.prix_aff);
+            printf("Prix siège première classe : %d\n", v.prix_class);
+            printf("-------------------------------------\n");
+            trouve = 1; // Marque qu'au moins un vol a été trouvé
+        }
+    }
+
+    if (!trouve) {
+        printf("Aucun vol trouvé pour la date d'arrivée : %s\n", dateArrivee);
+        fclose(file);
+        return -1; // Indique que la recherche a échoué
+    }
+
+    fclose(file);
+    return 0; // Indique que la recherche a réussi
+}
+
+
+
+
+case 10:afficheRechercheVolParDestination();break;
+            case 11:afficheRechercheVolParDateDepart();break;
+            case 12:afficheRechercheVolParDateArrivee();break;
+
+
+
+int afficheRechercheVolParDestination();
+int afficheRechercheVolParDateDepart() ;
+int afficheRechercheVolParDateArrivee();
